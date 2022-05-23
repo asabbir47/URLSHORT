@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use App\Services\Normalizer;
 
 class ShortUrlController extends Controller
 {
@@ -15,6 +16,10 @@ class ShortUrlController extends Controller
         $request->validate([
             'original_url' => 'required|url'
         ]);
+
+        $original_url = $request->original_url;
+
+        // dd($original_url);
 
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
@@ -29,7 +34,7 @@ class ShortUrlController extends Controller
                 "platformTypes" =>  ["WINDOWS"],
                 "threatEntryTypes" => ["URL"],
                 "threatEntries" => [
-                    ['url' => $request->all()['original_url']],
+                    ['url' => $original_url],
                 ]
             ]
         ]);
@@ -42,7 +47,14 @@ class ShortUrlController extends Controller
             {
                 return Redirect::back()->withErrors('The url is not safe.');
             }else{
-                dd('ok');
+                
+                $normalizeUrlOb = new Normalizer($original_url,true,true);
+
+                $normalizedUrl = $normalizeUrlOb->normalize();
+                dump($normalizedUrl);
+
+                $parsed_url = \parse_url($normalizedUrl);
+                \dump($parsed_url);
             }
         }else{
             return Redirect::back()->withErrors('Please try again.');

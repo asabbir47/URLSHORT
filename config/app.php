@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
 
+        // URL\Normalizer::class,
+
         /*
          * Application Service Providers...
          */
