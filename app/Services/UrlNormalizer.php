@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class Normalizer
+class UrlNormalizer
 {
     private $url;
     private $scheme;

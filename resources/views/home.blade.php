@@ -10,7 +10,8 @@
                 <input id="original_url" type="text" class="form-control @error('original_url') is-invalid @enderror"
                     name="original_url" value="{{ old('original_url') }}" autocomplete="original_url" autofocus
                     placeholder="Type Original Url Here" required>
-                <button class="input-group-text btn btn-success" id="inputGroup-sizing-default">Generate Short URL</button>
+                <button class="input-group-text btn btn-success" id="inputGroup-sizing-default">Generate Short
+                    URL</button>
 
                 @error('original_url')
                 <span class="invalid-feedback" role="alert">
@@ -21,11 +22,16 @@
         </div>
 
     </form>
-    <div class="text-danger">
+    <div class="text-danger mt-4">
         @if($errors->any())
-        {{ implode('', $errors->all(':message')) }}
-    @endif
+        <h5>{!! implode('', $errors->all(':message')) !!}</h5>
+        @endif
     </div>
-    
+    <div class="text-success mt-4">
+        @if(session('success'))
+            <h5>{!!session('success')!!}</h5>
+        @endif
+    </div>
+
 </div>
 @endsection

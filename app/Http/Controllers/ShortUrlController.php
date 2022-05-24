@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
-use App\Services\Normalizer;
+use App\Services\UrlNormalizer;
+use App\Models\ShortUrl;
+use Illuminate\Support\Str;
 
 class ShortUrlController extends Controller
 {
@@ -48,13 +50,66 @@ class ShortUrlController extends Controller
                 return Redirect::back()->withErrors('The url is not safe.');
             }else{
                 
-                $normalizeUrlOb = new Normalizer($original_url,true,true);
+                $normalizeUrlOb = new UrlNormalizer($original_url,true,true);
 
                 $normalizedUrl = $normalizeUrlOb->normalize();
                 dump($normalizedUrl);
 
                 $parsed_url = \parse_url($normalizedUrl);
                 \dump($parsed_url);
+
+                $scheme = array_key_exists('scheme',$parsed_url)?$parsed_url['scheme'] : 'http';
+                $host = array_key_exists('host',$parsed_url)?$parsed_url['host'] : '';
+                $port = array_key_exists('port',$parsed_url)?$parsed_url['port'] : '';
+                $user = array_key_exists('user',$parsed_url)?$parsed_url['user'] : '';
+                $pass = array_key_exists('pass',$parsed_url)?$parsed_url['pass'] : '';
+                $path = array_key_exists('path',$parsed_url)?$parsed_url['path'] : '';
+                $query = array_key_exists('query',$parsed_url)?$parsed_url['query'] : '';
+                $fragment = array_key_exists('fragment',$parsed_url)?$parsed_url['fragment'] : '';
+
+                $checkUrlExistence = ShortUrl::where('scheme',$scheme)
+                                    ->where('host',$host)
+                                    ->where('port',$port)
+                                    ->where('user',$user)
+                                    ->where('pass',$pass)
+                                    ->where('path',$path)
+                                    ->where('query',$query)
+                                    ->where('fragment',$fragment)
+                                    ->first();
+
+                dump($checkUrlExistence);
+
+                if(!$checkUrlExistence)
+                {
+                    $randomString = Str::random(6);
+
+                    try {
+                        $result = ShortUrl::create([
+                            'original_url' => $original_url,
+                            'short_url' => $randomString,
+                            'scheme' => $scheme,
+                            'host' => $host,
+                            'port' => $port,
+                            'user' => $user,
+                            'pass' => $pass,
+                            'path' => $path,
+                            'query' => $query,
+                            'fragment' => $fragment,
+                        ]);
+                        $createdShortUrl = $request->getHttpHost().'/'.$result->short_url;
+                        return Redirect::back()->withSuccess('Generated short url is: <a href="http://'.$createdShortUrl.'">'.$createdShortUrl.'</a>');
+
+                    } catch (\Illuminate\Database\QueryException  $e) {
+                        \dump($e->getMessage());
+                    }
+
+                    
+                }else{
+                    $shortUrlFromPreviousEntry = $request->getHttpHost().'/'.$checkUrlExistence->short_url;
+                    dump($shortUrlFromPreviousEntry);
+                    return Redirect::back()->withErrors('The Given url exists in the system. Short url is: <a href="http://'.$shortUrlFromPreviousEntry.'">'.$shortUrlFromPreviousEntry.'</a>');
+                }
+                
             }
         }else{
             return Redirect::back()->withErrors('Please try again.');
