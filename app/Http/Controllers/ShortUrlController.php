@@ -12,6 +12,20 @@ use Illuminate\Support\Str;
 class ShortUrlController extends Controller
 {
     //
+    public function index()
+    {
+        $shortUrl = ShortUrl::latest()->paginate(10);
+
+        return view('shorturl',[
+            'urls' => $shortUrl
+        ]);
+    }
+
+    public function show(ShortUrl $short_url)
+    {
+        // dump($short_url);
+        return redirect($short_url->original_url);
+    }
 
     public function store(Request $request)
     {
@@ -53,10 +67,10 @@ class ShortUrlController extends Controller
                 $normalizeUrlOb = new UrlNormalizer($original_url,true,true);
 
                 $normalizedUrl = $normalizeUrlOb->normalize();
-                dump($normalizedUrl);
+                // dump($normalizedUrl);
 
                 $parsed_url = \parse_url($normalizedUrl);
-                \dump($parsed_url);
+                // \dump($parsed_url);
 
                 $scheme = array_key_exists('scheme',$parsed_url)?$parsed_url['scheme'] : 'http';
                 $host = array_key_exists('host',$parsed_url)?$parsed_url['host'] : '';
@@ -77,11 +91,29 @@ class ShortUrlController extends Controller
                                     ->where('fragment',$fragment)
                                     ->first();
 
-                dump($checkUrlExistence);
+                // dump($checkUrlExistence);
 
                 if(!$checkUrlExistence)
                 {
                     $randomString = Str::random(6);
+                    $shortUrlExistenceIterator = 0;
+                    while(true)
+                    {
+                        $shortUrlExistence = ShortUrl::where('short_url',$randomString)->first();
+                        if(!$shortUrlExistence) {
+                            break;
+                        }else{
+                            if($shortUrlExistence%2==0)
+                            {
+                                $randomString = Str::random(6);
+                            }
+                            else{
+                                $randomString = str_shuffle($randomString);
+                            }
+                        }
+                        if($shortUrlExistenceIterator>5)break;
+                        $shortUrlExistenceIterator++;
+                    }
 
                     try {
                         $result = ShortUrl::create([
@@ -97,17 +129,18 @@ class ShortUrlController extends Controller
                             'fragment' => $fragment,
                         ]);
                         $createdShortUrl = $request->getHttpHost().'/'.$result->short_url;
-                        return Redirect::back()->withSuccess('Generated short url is: <a href="http://'.$createdShortUrl.'">'.$createdShortUrl.'</a>');
+                        return Redirect::back()->withSuccess('Generated short url is: <a target="_blank" href="http://'.$createdShortUrl.'">'.$createdShortUrl.'</a>');
 
                     } catch (\Illuminate\Database\QueryException  $e) {
-                        \dump($e->getMessage());
+                        // \dump($e->getMessage());
+                        return Redirect::back()->withErrors('Please try again');
                     }
 
                     
                 }else{
                     $shortUrlFromPreviousEntry = $request->getHttpHost().'/'.$checkUrlExistence->short_url;
-                    dump($shortUrlFromPreviousEntry);
-                    return Redirect::back()->withErrors('The Given url exists in the system. Short url is: <a href="http://'.$shortUrlFromPreviousEntry.'">'.$shortUrlFromPreviousEntry.'</a>');
+                    // dump($shortUrlFromPreviousEntry);
+                    return Redirect::back()->withErrors('The Given url exists in the system. Short url is: <a target="_blank" href="http://'.$shortUrlFromPreviousEntry.'">'.$shortUrlFromPreviousEntry.'</a>');
                 }
                 
             }

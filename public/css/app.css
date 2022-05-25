@@ -53,7 +53,7 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 0.9rem;
+  --bs-body-font-size: 1.1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
@@ -105,47 +105,52 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.35rem + 1.2vw);
+  font-size: calc(1.4rem + 1.8vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.305rem + 0.66vw);
+  font-size: calc(1.345rem + 1.14vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.2825rem + 0.39vw);
+  font-size: calc(1.3175rem + 0.81vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.575rem;
+    font-size: 1.925rem;
   }
 }
 
 h4, .h4 {
-  font-size: calc(1.26rem + 0.12vw);
+  font-size: calc(1.29rem + 0.48vw);
 }
 @media (min-width: 1200px) {
   h4, .h4 {
-    font-size: 1.35rem;
+    font-size: 1.65rem;
   }
 }
 
 h5, .h5 {
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
+}
+@media (min-width: 1200px) {
+  h5, .h5 {
+    font-size: 1.375rem;
+  }
 }
 
 h6, .h6 {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 p {
@@ -484,8 +489,13 @@ progress {
 }
 
 .lead {
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   font-weight: 300;
+}
+@media (min-width: 1200px) {
+  .lead {
+    font-size: 1.375rem;
+  }
 }
 
 .display-1 {
@@ -578,7 +588,12 @@ progress {
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
+}
+@media (min-width: 1200px) {
+  .blockquote {
+    font-size: 1.375rem;
+  }
 }
 .blockquote > :last-child {
   margin-bottom: 0;
@@ -2166,13 +2181,18 @@ progress {
 .col-form-label-lg {
   padding-top: calc(0.5rem + 1px);
   padding-bottom: calc(0.5rem + 1px);
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
+}
+@media (min-width: 1200px) {
+  .col-form-label-lg {
+    font-size: 1.375rem;
+  }
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25rem + 1px);
   padding-bottom: calc(0.25rem + 1px);
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
 }
 
 .form-text {
@@ -2185,7 +2205,7 @@ progress {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -2326,7 +2346,7 @@ progress {
 .form-control-sm {
   min-height: calc(1.6em + 0.5rem + 2px);
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   border-radius: 0.2rem;
 }
 .form-control-sm::-webkit-file-upload-button {
@@ -2351,8 +2371,13 @@ progress {
 .form-control-lg {
   min-height: calc(1.6em + 1rem + 2px);
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   border-radius: 0.3rem;
+}
+@media (min-width: 1200px) {
+  .form-control-lg {
+    font-size: 1.375rem;
+  }
 }
 .form-control-lg::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
@@ -2405,7 +2430,7 @@ textarea.form-control-lg {
   width: 100%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -2447,7 +2472,7 @@ textarea.form-control-lg {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   border-radius: 0.2rem;
 }
 
@@ -2455,13 +2480,18 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   border-radius: 0.3rem;
+}
+@media (min-width: 1200px) {
+  .form-select-lg {
+    font-size: 1.375rem;
+  }
 }
 
 .form-check {
   display: block;
-  min-height: 1.44rem;
+  min-height: 1.76rem;
   padding-left: 1.5em;
   margin-bottom: 0.125rem;
 }
@@ -2759,7 +2789,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -2775,8 +2805,16 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   border-radius: 0.3rem;
+}
+@media (min-width: 1200px) {
+  .input-group-lg > .form-control,
+.input-group-lg > .form-select,
+.input-group-lg > .input-group-text,
+.input-group-lg > .btn {
+    font-size: 1.375rem;
+  }
 }
 
 .input-group-sm > .form-control,
@@ -2784,7 +2822,7 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   border-radius: 0.2rem;
 }
 
@@ -2825,7 +2863,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   color: #fff;
   background-color: rgba(25, 135, 84, 0.9);
   border-radius: 0.25rem;
@@ -2914,7 +2952,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
@@ -3003,7 +3041,7 @@ textarea.form-control-lg {
   background-color: transparent;
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -3478,13 +3516,18 @@ textarea.form-control-lg {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   border-radius: 0.3rem;
+}
+@media (min-width: 1200px) {
+  .btn-lg, .btn-group-lg > .btn {
+    font-size: 1.375rem;
+  }
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   border-radius: 0.2rem;
 }
 
@@ -3556,7 +3599,7 @@ textarea.form-control-lg {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: #212529;
   text-align: left;
   list-style: none;
@@ -3791,7 +3834,7 @@ textarea.form-control-lg {
   display: block;
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   color: #6c757d;
   white-space: nowrap;
 }
@@ -4045,12 +4088,17 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
-  padding-top: 0.32rem;
-  padding-bottom: 0.32rem;
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   text-decoration: none;
   white-space: nowrap;
+}
+@media (min-width: 1200px) {
+  .navbar-brand {
+    font-size: 1.375rem;
+  }
 }
 .navbar-nav {
   display: flex;
@@ -4080,12 +4128,17 @@ textarea.form-control-lg {
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: box-shadow 0.15s ease-in-out;
+}
+@media (min-width: 1200px) {
+  .navbar-toggler {
+    font-size: 1.375rem;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .navbar-toggler {
@@ -4670,7 +4723,7 @@ textarea.form-control-lg {
   align-items: center;
   width: 100%;
   padding: 1rem 1.25rem;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
@@ -4859,7 +4912,12 @@ textarea.form-control-lg {
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
+  font-size: calc(1.2625rem + 0.15vw);
+}
+@media (min-width: 1200px) {
+  .pagination-lg .page-link {
+    font-size: 1.375rem;
+  }
 }
 .pagination-lg .page-item:first-child .page-link {
   border-top-left-radius: 0.3rem;
@@ -4872,7 +4930,7 @@ textarea.form-control-lg {
 
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
 }
 .pagination-sm .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
@@ -5018,7 +5076,7 @@ textarea.form-control-lg {
   display: flex;
   height: 1rem;
   overflow: hidden;
-  font-size: 0.675rem;
+  font-size: 0.825rem;
   background-color: #e9ecef;
   border-radius: 0.25rem;
 }
@@ -5775,7 +5833,7 @@ textarea.form-control-lg {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -5877,7 +5935,7 @@ textarea.form-control-lg {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.7875rem;
+  font-size: 0.9625rem;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -5971,7 +6029,7 @@ textarea.form-control-lg {
 .popover-header {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   background-color: #f0f0f0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   border-top-left-radius: calc(0.3rem - 1px);
@@ -7596,27 +7654,27 @@ textarea.form-control-lg {
 }
 
 .fs-1 {
-  font-size: calc(1.35rem + 1.2vw) !important;
+  font-size: calc(1.4rem + 1.8vw) !important;
 }
 
 .fs-2 {
-  font-size: calc(1.305rem + 0.66vw) !important;
+  font-size: calc(1.345rem + 1.14vw) !important;
 }
 
 .fs-3 {
-  font-size: calc(1.2825rem + 0.39vw) !important;
+  font-size: calc(1.3175rem + 0.81vw) !important;
 }
 
 .fs-4 {
-  font-size: calc(1.26rem + 0.12vw) !important;
+  font-size: calc(1.29rem + 0.48vw) !important;
 }
 
 .fs-5 {
-  font-size: 1.125rem !important;
+  font-size: calc(1.2625rem + 0.15vw) !important;
 }
 
 .fs-6 {
-  font-size: 0.9rem !important;
+  font-size: 1.1rem !important;
 }
 
 .fst-italic {
@@ -11230,19 +11288,23 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-1 {
-    font-size: 2.25rem !important;
+    font-size: 2.75rem !important;
   }
 
   .fs-2 {
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
   }
 
   .fs-3 {
-    font-size: 1.575rem !important;
+    font-size: 1.925rem !important;
   }
 
   .fs-4 {
-    font-size: 1.35rem !important;
+    font-size: 1.65rem !important;
+  }
+
+  .fs-5 {
+    font-size: 1.375rem !important;
   }
 }
 @media print {
@@ -11285,4 +11347,10 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+#generated_url_table td:nth-child(2) {
+  white-space: nowrap;
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

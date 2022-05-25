@@ -20,11 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', [ShortUrlController::class, 'index'])->name('shorturl');
+Route::get('/{short_url:short_url}',[ShortUrlController::class,'show'])->name('shorturl.show');
 Route::post('/shorturl/store', [ShortUrlController::class, 'store'])->name('shorturl.store');
 
 // Route::get('/dfg/{folder}/{shorturl}', [ShortUrlController::class, 'hola'])->name('shorturl.hola');
 // Route::get('/home/{dwqbt}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/{folder?}/{shorturl}', [ShortUrlController::class, 'show'])->where('folder','.*')->name('shorturl.show');
+// Route::get('/{folder?}/{shorturl}', [ShortUrlController::class, 'show'])->where('folder','.*')->name('shorturl.show');

@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+#generated_url_table td:nth-child(2){
+    white-space: nowrap; 
+  max-width: 600px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
