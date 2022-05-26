@@ -16,7 +16,7 @@ class CreateShortUrlsTable extends Migration
         Schema::create('short_urls', function (Blueprint $table) {
             $table->id();
             $table->string('original_url',2083);
-            $table->string('short_url')->unique();
+            $table->string('short_url');
             $table->string('scheme');
             $table->string('host');
             $table->string('port');
@@ -25,8 +25,12 @@ class CreateShortUrlsTable extends Migration
             $table->string('path',2083);
             $table->string('query',2083);
             $table->string('fragment',2083);
+            $table->unsignedBigInteger('folder_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['short_url', 'folder_id']);
+            $table->index('folder_id');
         });
     }
 

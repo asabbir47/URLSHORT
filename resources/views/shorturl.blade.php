@@ -7,6 +7,17 @@
 
         <div class="">
             <div class="input-group mb-3">
+                <input id="folder_id" type="text" class="form-control @error('folder_id') is-invalid @enderror"
+                    name="folder_id" value="{{ old('folder_id') }}" autocomplete="folder_id" autofocus
+                    placeholder="Type Optional Folder Name Here. e.g., folder/subfolder/" >
+
+                @error('folder_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="input-group mb-3">
                 <input id="original_url" type="text" class="form-control @error('original_url') is-invalid @enderror"
                     name="original_url" value="{{ old('original_url') }}" autocomplete="original_url" autofocus
                     placeholder="Type Original Url Here" required>
@@ -46,8 +57,8 @@
                 @foreach($urls as $url)
                 <tr>
                     <td>
-                        <a target="_blank" href="http://{{request()->getHttpHost()}}/{{$url->short_url}}">
-                            http://{{request()->getHttpHost()}}/{{$url->short_url}}
+                        <a target="_blank" href="http://{{request()->getHttpHost()}}/{{$url->folders}}{{$url->short_url}}">
+                            http://{{request()->getHttpHost()}}/{{$url->folders}}{{$url->short_url}}
                         </a>
                     </td>
                     <td>

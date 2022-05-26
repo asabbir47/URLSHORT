@@ -21,5 +21,11 @@ class ShortUrl extends Model
         'path',
         'query',
         'fragment',
+        'folder_id',
     ];
+
+    public function folder()
+    {
+        $this->belongsTo(Folder::class);
+    }
 }
