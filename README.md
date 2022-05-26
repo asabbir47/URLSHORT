@@ -8,9 +8,9 @@ This is a short project for shortening the url.
 
 <h5>Initial work to run the project</h5>
 <p>
-1. Compser update
-2. Make an env file from example env file
-3. Rename the database name and create database with same filename
-4. php artisan migrate:fresh
-5. php artisan key:generate
+1. Compser update<br>
+2. Make an env file from example env file<br>
+3. Rename the database name and create database with same filename<br>
+4. php artisan migrate:fresh<br>
+5. php artisan key:generate<br>
 </p>
