@@ -15,3 +15,12 @@ This is a short project for shortening the url.
 5. php artisan key:generate<br>
 Ready to go
 </p>
+
+<h5>Points</h5>
+1. The url from the user will be checked by google lookup api.<br>
+2. The Short Url is valid Url.<br>
+3. The Short Url is Unique.<br>
+4. Upon opening the short URL, the user will be redirected to the original URL.<br>
+5. The URL will be shortened till 6 symbols hash, which contains alphanumeric symbols.<br>
+6. System will not generate duplicate short url for the same url. It will show the already generated short url.<br>
+7. Functionality will work with folder.<br>
