@@ -13,4 +13,5 @@ This is a short project for shortening the url.
 3. Rename the database name and create database with same filename<br>
 4. php artisan migrate:fresh<br>
 5. php artisan key:generate<br>
+Ready to go
 </p>
